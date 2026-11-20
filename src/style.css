@@ -1,0 +1,95 @@
+* { box-sizing: border-box }
+:root { color-scheme: dark; font-family: Inter, "Segoe UI", system-ui, sans-serif; background: #111016; color: #f5f3fb; font-synthesis: none; --muted: #aaa6ba; --line: #2c2938; --accent: #a99aff }
+body { margin: 0 }
+button, input { font: inherit }
+button, a, input[type=range] { -webkit-tap-highlight-color: transparent }
+button { cursor: pointer; color: inherit }
+:disabled { cursor: not-allowed; opacity: .58 }
+fieldset:disabled { opacity: 1 }
+:focus-visible { outline: 2px solid #b7aaff; outline-offset: 3px }
+.top { border-bottom: 1px solid #252330; background: #15131b }
+.top-inner { min-height: 70px; max-width: 1200px; padding: 0 32px; margin: auto; display: flex; justify-content: space-between; align-items: center }
+.brand { display: flex; align-items: center; gap: 10px }
+.brand { font-size: 21px; font-weight: 750; letter-spacing: -.65px }
+.brand-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; color: #ded4ff; background: #33265d }
+.github-link { padding: 7px 12px; border: 1px solid #423359; border-radius: 8px; color: #efe8ff; background: #302545; text-decoration: none; font-size: 13px; font-weight: 650 }
+.github-link:hover { background: #40315d }
+main { max-width: 1200px; margin: auto; padding: 38px 32px 42px }
+.intro { margin-bottom: 25px }
+h1 { margin: 0; font-size: clamp(35px, 5vw, 52px); line-height: 1.05; letter-spacing: -.067em; font-weight: 760 }
+h1 span { color: #a292ff }
+.intro p { color: var(--muted); margin: 12px 0 0; font-size: 15px }
+.workspace { display: grid; grid-template-columns: minmax(320px, .83fr) minmax(0, 1.17fr); gap: 18px; align-items: stretch }
+.controls { display: grid; gap: 14px; min-width: 0 }
+.panel { background: #191720; border: 1px solid var(--line); border-radius: 15px; min-width: 0; padding: 17px 19px }
+h2 { margin: 0 0 13px; display: flex; gap: 9px; align-items: center; font-size: 15px; font-weight: 680; letter-spacing: -.015em }
+h2 svg { color: #b6a8ff }
+.drop { width: 100%; min-width: 0; display: grid; justify-items: center; gap: 5px; padding: 15px 11px; border: 1px dashed #5b4e83; border-radius: 11px; background: #201a30; color: #f4edff }
+.drop:hover:enabled, .drop.drag { border-color: #b09cff; background: #2b2242 }
+.drop > * { max-width: 100%; overflow-wrap: anywhere }
+.drop strong { font-size: 14px }
+.drop span:not(.upload-icon), .drop small { color: #bcb2d3; font-size: 12px }
+.drop b { color: #c2b0ff; font-weight: 650 }
+.drop small { color: #9f95b7; margin-top: 5px; font-size: 11px; letter-spacing: .045em }
+.upload-icon { display: grid; place-items: center; border-radius: 9px; background: #372750; color: #cfbfff; width: 35px; height: 35px; margin-bottom: 3px }
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; display: grid; gap: 12px }
+.field, .label { font-size: 12px; font-weight: 630; color: #d5d0e2 }
+.field { display: grid; min-width: 0; gap: 6px }
+input:is([type=text], [type=time], [type=number]) { min-width: 0; width: 100%; color: #f5f0ff; background: #121118; border: 1px solid #353043; border-radius: 8px; padding: 8px 11px; min-height: 37px; font-size: 13px }
+.randomize { justify-self: start; background: #302545; border: 1px solid #423359; border-radius: 7px; padding: 6px 9px; color: #e3d7ff; font-size: 12px }
+input::placeholder { color: #8b839f }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 13px }
+.label { margin-bottom: 6px }
+.segments, .swatches { display: flex; align-items: center; gap: 7px; min-height: 34px }
+.segments { border: 1px solid #342e44; background: #121118; border-radius: 8px; padding: 3px; gap: 3px }
+.segments button { flex: 1; display: flex; justify-content: center; align-items: center; gap: 4px; background: transparent; border: 0; border-radius: 5px; color: #b9b1ca; font-size: 12px; padding: 4px 6px }
+.segments [aria-pressed=true] { background: #362a51; color: #eee6ff }
+.swatch { flex: 0 0 21px; width: 21px; height: 21px; border: 1px solid #ffffff25; border-radius: 50%; padding: 0 }
+.swatch[aria-pressed=true] { outline: 1px solid #d6ccfa; outline-offset: 2px }
+output { color: #bcb2d5; font-variant-numeric: tabular-nums }
+input[type=range] { margin: 0; min-width: 0; width: 100%; accent-color: #a28bf5; cursor: pointer }
+.filename { display: flex; align-items: center; border: 1px solid #353043; border-radius: 8px; background: #121118 }
+.filename input { border: 0; background: none }
+.filename span { border-left: 1px solid #353043; padding: 0 10px; font-family: ui-monospace, monospace; color: #ae9ec9 }
+.primary, .download { width: 100%; display: flex; justify-content: center; align-items: center; text-align: center; overflow-wrap: anywhere; gap: 7px; text-decoration: none; margin-top: 11px; min-height: 40px; padding: 8px; border: 0; border-radius: 8px; font-size: 13px; font-weight: 720 }
+.primary { color: #1c1234; background: #b3a0ff }
+.primary:hover:enabled { background: #c4b4ff }
+.download { background: #2c2544; color: #e3d7ff }
+.format { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 9px; color: #aca2bf; font: 11px ui-monospace, monospace }
+.format span { opacity: .6 }
+.preview { display: flex; flex-direction: column; padding: 15px; min-height: 100% }
+.preview-head { display: flex; align-items: center; justify-content: space-between; margin: 1px 3px 12px }
+.preview-head h2 { margin: 0 }
+.preview-head span { font: 11px ui-monospace, monospace; color: #c4b9d9; border: 1px solid #3a3249; border-radius: 5px; padding: 3px 6px }
+.stage { flex: 1; min-height: 0; display: grid; place-items: center; position: relative; padding: 15px; border-radius: 10px; background: radial-gradient(ellipse at center, #292437, #15131e 78%); border: 1px solid #2b2639 }
+.stage canvas { height: clamp(338px, 50vh, 500px); width: auto; max-width: 100%; display: block; aspect-ratio: 603 / 1311; border-radius: 12px; box-shadow: 0 13px 38px #08070b98 }
+.stage:fullscreen canvas { height: min(95vh, 208vw) }
+.expand { position: absolute; bottom: 8px; right: 8px; background: #211a2b; color: #cfc4e1; border: 1px solid #3a3048; display: grid; place-items: center; height: 30px; width: 30px; border-radius: 6px }
+.transport { display: flex; align-items: center; gap: 10px; margin-top: 11px; color: #c3b9d7; font: 11px ui-monospace, monospace }
+.transport button { flex: 0 0 35px; height: 33px; display: grid; place-items: center; padding: 0; color: #ddceff; background: #302545; border: 1px solid #423359; border-radius: 7px }
+.render-status { margin-top: 10px; font-size: 12px }
+.render-status div, .error { display: flex; justify-content: space-between; align-items: center; gap: 12px }
+.render-status button, .error button { background: transparent; border: 0; color: inherit; padding: 3px }
+progress { width: 100%; accent-color: #a28bf5 }
+.error { border: 1px solid #764457; background: #3b2230; color: #ffdce7; border-radius: 9px; margin-bottom: 12px; padding: 8px 12px; font-size: 13px }
+.trim { margin-bottom: 12px }
+.trim-labels { display: flex; justify-content: space-between; gap: 5px; font: 11px ui-monospace, monospace; color: #c3b9d7 }
+.trim-track { position: relative; height: 26px; margin: 3px 8px 0; }
+.trim-track::before, .trim-selection { content: ''; position: absolute; inset: 10px 0; border-radius: 5px; background: #423359 }
+.trim-selection { background: #9c85ec }
+.trim-track input { appearance: none; position: absolute; inset: 0 auto 0 -8px; width: calc(100% + 16px); background: transparent; pointer-events: none }
+.trim-track input::-webkit-slider-thumb { appearance: none; pointer-events: auto; width: 16px; height: 22px; background: #d5c7ff; border: 2px solid #31254e; border-radius: 4px; cursor: ew-resize }
+.trim-track input::-moz-range-thumb { pointer-events: auto; box-sizing: border-box; width: 16px; height: 22px; background: #d5c7ff; border: 2px solid #31254e; border-radius: 4px; cursor: ew-resize }
+@media (max-width: 760px) {
+  .top-inner { padding: 0 17px; min-height: 58px }
+  main { padding: 26px 15px 28px }
+  .workspace { display: flex; flex-direction: column; gap: 13px }
+  .controls { display: contents }
+  .preview { order: 1 }
+  .controls > section:first-child { order: 0 }
+  .controls > section:nth-child(2) { order: 2 }
+  .output { order: 3 }
+  .stage canvas { height: clamp(275px, 54vh, 420px); width: auto; max-height: 145vw }
+}
+@media (max-width: 355px) { .split { grid-template-columns: 1fr } }
+
