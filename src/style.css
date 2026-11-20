@@ -12,8 +12,16 @@ fieldset:disabled { opacity: 1 }
 .brand { display: flex; align-items: center; gap: 10px }
 .brand { font-size: 21px; font-weight: 750; letter-spacing: -.65px }
 .brand-icon { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; color: #ded4ff; background: #33265d }
-.github-link { padding: 7px 12px; border: 1px solid #423359; border-radius: 8px; color: #efe8ff; background: #302545; text-decoration: none; font-size: 13px; font-weight: 650 }
+.github-dropdown { position: relative; z-index: 2 }
+.github-link { display: flex; align-items: center; gap: 7px; list-style: none; cursor: pointer; padding: 7px 12px; border: 1px solid #423359; border-radius: 8px; color: #efe8ff; background: #302545; font-size: 13px; font-weight: 650 }
+.github-link::-webkit-details-marker { display: none }
 .github-link:hover { background: #40315d }
+.github-dropdown[open] .github-link svg:last-child { transform: rotate(180deg) }
+.github-panel { position: absolute; top: calc(100% + 8px); right: 0; width: 174px; padding: 5px; border: 1px solid #423359; border-radius: 10px; background: #211b2d; box-shadow: 0 10px 24px #0007 }
+.github-panel a, .github-credit { display: flex; align-items: center; gap: 9px; padding: 8px 9px }
+.github-panel a { color: #efe8ff; border-radius: 6px; text-decoration: none; font-size: 13px }
+.github-panel a:hover { background: #302545 }
+.github-credit { margin-top: 4px; border-top: 1px solid #423359; color: #b8adc8; font-size: 11px }
 main { max-width: 1200px; margin: auto; padding: 38px 32px 42px }
 .intro { margin-bottom: 25px }
 h1 { margin: 0; font-size: clamp(35px, 5vw, 52px); line-height: 1.05; letter-spacing: -.067em; font-weight: 760 }

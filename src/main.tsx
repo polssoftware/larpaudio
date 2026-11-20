@@ -5,7 +5,7 @@ import { renderMp4 } from './export'
 import './style.css'
 
 type Track = { file: File; buffer: AudioBuffer; peaks: Float32Array; url: string }
-type IconName = 'wave' | 'file' | 'upload' | 'play' | 'pause' | 'download' | 'sun' | 'moon' | 'expand'
+type IconName = 'wave' | 'file' | 'upload' | 'play' | 'pause' | 'download' | 'sun' | 'moon' | 'expand' | 'github' | 'code' | 'sparkles' | 'chevron'
 const paths: Record<IconName, string> = {
   wave: 'M3 10v4m4-7v10m5-15v20m5-15v10m4-7v4',
   file: 'M13 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10Zm0 0v7h7M8 15v2m4-4v6m4-4v2',
@@ -16,9 +16,37 @@ const paths: Record<IconName, string> = {
   sun: 'M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z',
   moon: 'M20.5 14a8.5 8.5 0 0 1-10.5-10.5A8.5 8.5 0 1 0 20.5 14Z',
   expand: 'M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5',
+  github: 'M9 19c-4 1-4-2-6-2m12 5v-3.9a3.4 3.4 0 0 0-.9-2.6c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6S17.6 1.3 15 3a13 13 0 0 0-6 0C6.4 1.3 5.3 1.6 5.3 1.6a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.6V22',
+  code: 'm8 6-6 6 6 6m8-12 6 6-6 6m-2-15-4 18',
+  sparkles: 'M12 2l2.3 7.7L22 12l-7.7 2.3L12 22l-2.3-7.7L2 12l7.7-2.3L12 2Zm7 1v4m-2-2h4',
+  chevron: 'm6 9 6 6 6-6',
 }
 function Icon({ name, size = 18 }: { name: IconName; size?: number }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d={paths[name]} /></svg>
+}
+
+function GitHubDropdown() {
+  const menu = useRef<HTMLDetailsElement>(null)
+  useEffect(() => {
+    function dismiss(event: PointerEvent) {
+      if (menu.current && event.target instanceof Node && !menu.current.contains(event.target)) menu.current.open = false
+    }
+    document.addEventListener('pointerdown', dismiss)
+    return () => document.removeEventListener('pointerdown', dismiss)
+  }, [])
+
+  return <details className="github-dropdown" ref={menu} onKeyDown={event => {
+    if (event.key !== 'Escape' || !event.currentTarget.open) return
+    event.currentTarget.open = false
+    event.currentTarget.querySelector('summary')?.focus()
+  }}>
+    <summary className="github-link"><Icon name="github" size={16} /> GitHub <Icon name="chevron" size={14} /></summary>
+    <div className="github-panel">
+      <a href="https://github.com/polssoftware/larpaudio" target="_blank" rel="noopener noreferrer"><Icon name="code" size={16} /> Source</a>
+      <a href="https://github.com/polssoftware" target="_blank" rel="noopener noreferrer"><Icon name="github" size={16} /> GitHub</a>
+      <div className="github-credit"><Icon name="sparkles" size={14} /> Created with AI</div>
+    </div>
+  </details>
 }
 
 const defaults: Appearance = { title: '', theme: 'light', statusTime: '09:41', battery: 73 }
@@ -156,7 +184,7 @@ function App() {
   return <>
     <header className="top"><div className="top-inner">
       <div className="brand"><span className="brand-icon"><Icon name="wave" size={21} /></span>LarpAudio</div>
-      <a className="github-link" href="https://github.com/polssoftware" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <GitHubDropdown />
     </div></header>
 
     <main>
